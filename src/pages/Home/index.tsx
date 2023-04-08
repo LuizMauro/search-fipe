@@ -26,6 +26,7 @@ const Home: React.FC = () => {
     yearsHasError,
     isCarLoading,
     carResponse,
+    resetStates,
     setBrandCode,
     setModelCode,
     setYearCode,
@@ -62,7 +63,11 @@ const Home: React.FC = () => {
           style={{ width: "100%" }}
           size={"lg"}
           placeholder={"Marca"}
-          onSelect={(value) => value !== "" && setBrandCode(value ?? "")}
+          onSelect={(value) => {
+            resetStates.resetModel("");
+            resetStates.resetYear("");
+            setBrandCode(value ?? "");
+          }}
           disabled={!brandsResponse || brandsHasError || isBrandsLoading}
         />
 
@@ -72,7 +77,10 @@ const Home: React.FC = () => {
             style={{ width: "100%" }}
             size={"lg"}
             placeholder={"Modelo"}
-            onSelect={(value) => value !== "" && setModelCode(value ?? "")}
+            onSelect={(value) => {
+              resetStates.resetYear("");
+              setModelCode(value ?? "");
+            }}
             disabled={!modelsResponse || modelsHasError || isModelsLoading}
           />
         )}
@@ -83,12 +91,12 @@ const Home: React.FC = () => {
             style={{ width: "100%" }}
             size={"lg"}
             placeholder={"Anos"}
-            onSelect={(value) => value !== "" && setYearCode(value)}
+            onSelect={(value) => setYearCode(value)}
             disabled={!yearsResponse || yearsHasError || isYearsLoading}
           />
         )}
       </FormContainer>
-      {carResponse && (
+      {modelsResponse && yearsResponse && carResponse && (
         <ContainerFipe>
           <h3 style={{ textAlign: "center" }}>{carResponse.model}</h3>
           <p style={{ textAlign: "center" }}>

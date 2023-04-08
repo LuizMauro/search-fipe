@@ -13,6 +13,10 @@ export type FipeContextProps = {
   isYearsLoading: boolean;
   isCarLoading: boolean;
   yearsHasError: boolean;
+  resetStates: {
+    resetModel: Dispatch<SetStateAction<string>>;
+    resetYear: Dispatch<SetStateAction<string>>;
+  };
   carResponse: CarProps | undefined | null;
   setBrandCode: Dispatch<SetStateAction<string>>;
   setModelCode: Dispatch<SetStateAction<string>>;

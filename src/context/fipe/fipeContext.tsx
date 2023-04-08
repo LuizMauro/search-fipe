@@ -15,12 +15,19 @@ export const FipeProvider = ({ children }: FipeContextProviderProps) => {
   const [modelCode, setModelCode] = useState("");
   const [yearCode, setYearCode] = useState("");
 
+  const resetStates = {
+    resetModel: () => setModelCode(""),
+    resetYear: () => setYearCode(""),
+  };
+
   const {
     data: brandsResponse,
     isFetching: isBrandsLoading,
     isError: brandsHasError,
     refetch: brandsRefetch,
   } = useQuery<ResponseProps[] | null>(["brands"], async () => {
+    resetStates.resetModel();
+    resetStates.resetYear();
     const response = await getCarBrands();
     return response;
   });
@@ -87,14 +94,6 @@ export const FipeProvider = ({ children }: FipeContextProviderProps) => {
     }
   }, [carHasError, yearsHasError, brandsHasError]);
 
-  const resetState = () => {
-    setTimeout(() => {
-      setBrandCode("");
-      setModelCode("");
-      setYearCode("");
-    }, 2000);
-  };
-
   return (
     <FipeContext.Provider
       value={{
@@ -110,6 +109,7 @@ export const FipeProvider = ({ children }: FipeContextProviderProps) => {
         brandCode,
         isCarLoading,
         carResponse,
+        resetStates,
         setBrandCode,
         setModelCode,
         setYearCode,
