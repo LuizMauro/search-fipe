@@ -4,6 +4,7 @@ import useFipe from "../../hooks/useFipe";
 
 import Teste from "../../animations/CarTypes.json";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 
 import {
   Container,
@@ -27,6 +28,7 @@ const Home: React.FC = () => {
     isCarLoading,
     carResponse,
     resetStates,
+    handleFavorite,
     setBrandCode,
     setModelCode,
     setYearCode,
@@ -118,8 +120,19 @@ const Home: React.FC = () => {
                 color: "#0f131a",
               }}
             >
-              {carResponse.price}{" "}
+              {carResponse.price}
             </p>
+          </div>
+          <div
+            onClick={() => handleFavorite()}
+            style={{
+              cursor: "pointer",
+              display: "flex",
+              gap: 10,
+              alignItems: "center",
+            }}
+          >
+            Favoritar <MdOutlineFavoriteBorder size={18} />
           </div>
         </ContainerFipe>
       )}

@@ -17,6 +17,10 @@ export type FipeContextProps = {
     resetModel: Dispatch<SetStateAction<string>>;
     resetYear: Dispatch<SetStateAction<string>>;
   };
+  searchAgain: Function;
+  indexPage: number;
+  setIndexPage: Dispatch<SetStateAction<number>>;
+  handleFavorite: Function;
   carResponse: CarProps | undefined | null;
   setBrandCode: Dispatch<SetStateAction<string>>;
   setModelCode: Dispatch<SetStateAction<string>>;

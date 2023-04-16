@@ -6,11 +6,15 @@ import { getCar, getCarBrands, getCarModels, getYears } from "../../services";
 import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 
+import { addedFavorite } from "../../utils/localStorage";
+
 export const FipeContext = createContext<FipeContextProps>(
   {} as FipeContextProps
 );
 
 export const FipeProvider = ({ children }: FipeContextProviderProps) => {
+  const [indexPage, setIndexPage] = useState(0);
+
   const [brandCode, setBrandCode] = useState("");
   const [modelCode, setModelCode] = useState("");
   const [yearCode, setYearCode] = useState("");
@@ -94,6 +98,19 @@ export const FipeProvider = ({ children }: FipeContextProviderProps) => {
     }
   }, [carHasError, yearsHasError, brandsHasError]);
 
+  const handleFavorite = () => {
+    addedFavorite({
+      brandCode,
+      modelCode,
+      yearCode,
+      nameModel: carResponse?.model ?? "",
+    });
+  };
+
+  const searchAgain = () => {
+    setIndexPage(0);
+  };
+
   return (
     <FipeContext.Provider
       value={{
@@ -110,9 +127,13 @@ export const FipeProvider = ({ children }: FipeContextProviderProps) => {
         isCarLoading,
         carResponse,
         resetStates,
+        indexPage,
+        handleFavorite,
         setBrandCode,
         setModelCode,
         setYearCode,
+        setIndexPage,
+        searchAgain,
       }}
     >
       {children}
