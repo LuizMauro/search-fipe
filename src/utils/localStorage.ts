@@ -35,7 +35,6 @@ export const addedFavorite = (data: addedFavoriteTypes) => {
   const exists = findFavorite(data);
 
   if (exists) {
-    alert(`Favorite já existe`);
     return;
   }
 
