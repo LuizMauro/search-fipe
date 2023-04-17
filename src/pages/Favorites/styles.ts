@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const CardModel = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 380px;
   min-width: 320px;
   padding: 15px;
   display: flex;

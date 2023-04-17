@@ -42,6 +42,7 @@ const Favorites: React.FC = () => {
             }
           >
             <h4>{item.nameModel}</h4>
+            <p>Ano: {item.yearCode.split("-")[0]}</p>
             <p>Buscar novamente</p>
           </CardModel>
         ))}
