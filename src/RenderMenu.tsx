@@ -23,36 +23,7 @@ const RenderMenu = () => {
 
   return (
     <>
-      {isMobile ? (
-        <MenuMobile>
-          <BiHomeAlt2
-            size={40}
-            onClick={() => setIndexPage(0)}
-            color={indexPage === 0 ? "#34c3ff" : "#fff"}
-          />
-          <MdOutlineFavoriteBorder
-            onClick={() => setIndexPage(1)}
-            size={40}
-            color={indexPage === 1 ? "#34c3ff" : "#fff"}
-          />
-        </MenuMobile>
-      ) : (
-        <MenuDesktop>
-          <BiHomeAlt2
-            onClick={() => setIndexPage(0)}
-            size={40}
-            color={indexPage === 0 ? "#34c3ff" : "#fff"}
-          />
-          <MdOutlineFavoriteBorder
-            onClick={() => setIndexPage(1)}
-            size={40}
-            color={indexPage === 1 ? "#34c3ff" : "#fff"}
-          />
-        </MenuDesktop>
-      )}
-
-      {indexPage === 0 && <Home />}
-      {indexPage === 1 && <Favorites />}
+      <Home />
     </>
   );
 };

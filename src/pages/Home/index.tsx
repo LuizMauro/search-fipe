@@ -123,7 +123,7 @@ const Home: React.FC = () => {
               {carResponse.price}
             </p>
           </div>
-          <div
+          {/* <div
             onClick={() => handleFavorite()}
             style={{
               cursor: "pointer",
@@ -133,7 +133,7 @@ const Home: React.FC = () => {
             }}
           >
             Favoritar <MdOutlineFavoriteBorder size={18} />
-          </div>
+          </div> */}
         </ContainerFipe>
       )}
     </Container>
